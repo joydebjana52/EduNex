@@ -20,7 +20,7 @@ function UploadCourse() {
   };
 
   return (
-    <div className="container mt-5" style={{ maxWidth: "600px" }}>
+    <div className="container mt-2 pt-5" style={{ maxWidth: "600px" }}>
       <h2 className="text-center mb-4 text-primary">Upload New Course</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">

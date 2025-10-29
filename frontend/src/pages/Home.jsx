@@ -1,20 +1,30 @@
-// import React from "react";
+import React from "react";
 import CourseCard from "../components/CourseCard";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 
 function Home() {
   const courses = [
-    { id: 1, title: "React Basics", description: "Learn React from scratch.", category: "Frontend" },
-    { id: 2, title: "Node.js Essentials", description: "Server-side JavaScript simplified.", category: "Backend" },
-    { id: 3, title: "PostgreSQL Mastery", description: "Learn database design and SQL.", category: "Database" },
+    {
+      id: 1,
+      title: "React Basics",
+      description: "Learn React from scratch.",
+      category: "Frontend",
+    },
+    {
+      id: 2,
+      title: "Node.js Essentials",
+      description: "Server-side JavaScript simplified.",
+      category: "Backend",
+    },
+    {
+      id: 3,
+      title: "PostgreSQL Mastery",
+      description: "Learn database design and SQL.",
+      category: "Database",
+    },
   ];
 
   return (
-    <div className="d-flex flex-column min-vh-100">
-      {/* Navbar */}
-      <Navbar />
-
+    <div className="d-flex flex-column min-vh-100 mt-4">
       {/* Hero Section */}
       <section
         className="py-5 text-center text-dark"
@@ -26,7 +36,8 @@ function Home() {
         <div className="container">
           <h1 className="display-5 fw-bold text-primary">Welcome to EduNex</h1>
           <p className="lead mb-4">
-            Learn, grow, and build your career with our interactive e-learning platform.
+            Learn, grow, and build your career with our interactive e-learning
+            platform.
           </p>
           <a href="/register" className="btn btn-primary btn-lg me-2">
             Get Started
@@ -90,7 +101,9 @@ function Home() {
       {/* Popular Courses */}
       <section className="py-5 bg-light">
         <div className="container">
-          <h2 className="text-center mb-5 fw-bold text-primary">Popular Courses</h2>
+          <h2 className="text-center mb-5 fw-bold text-primary">
+            Popular Courses
+          </h2>
           <div className="row g-4">
             {courses.map((course) => (
               <CourseCard key={course.id} course={course} />
@@ -103,12 +116,8 @@ function Home() {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <Footer />
     </div>
   );
 }
 
 export default Home;
-

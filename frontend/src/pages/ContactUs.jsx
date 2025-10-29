@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 
 function Contact() {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -14,7 +18,7 @@ function Contact() {
   };
 
   return (
-    <div className="container mt-5 pt-5">
+    <div className="container mt-4 pt-5">
       <div className="text-center mb-5">
         <h1 className="fw-bold text-primary mb-3">Contact Us</h1>
         <p className="text-muted lead">
@@ -24,7 +28,10 @@ function Contact() {
 
       <div className="row justify-content-center">
         <div className="col-md-6">
-          <form onSubmit={handleSubmit} className="bg-light p-4 rounded shadow-sm">
+          <form
+            onSubmit={handleSubmit}
+            className="bg-light p-4 rounded shadow-sm"
+          >
             <div className="mb-3">
               <label htmlFor="name" className="form-label fw-semibold">
                 Name
