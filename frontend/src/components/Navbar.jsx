@@ -8,7 +8,7 @@ function Navbar() {
     <nav className="navbar navbar-expand-lg navbar-light bg-primary shadow-sm fixed-top">
       <div className="container">
         {/* Brand / Logo */}
-        <Link className="navbar-brand fw-bold text-primary text-dark" to="/">
+        <Link className="navbar-brand fw-bold text-primary text-white" to="/">
           EduNex
         </Link>
 
@@ -32,27 +32,27 @@ function Navbar() {
         >
           <ul className="navbar-nav align-items-lg-center">
             <li className="nav-item">
-              <Link className="nav-link fw-semibold" to="/">
+              <Link className="nav-link fw-semibold text-white" to="/">
                 Home
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link fw-semibold" to="/aboutus">
+              <Link className="nav-link fw-semibold text-white" to="/aboutus">
                 About Us
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link fw-semibold" to="/dashboard">
+              <Link className="nav-link fw-semibold text-white" to="/dashboard">
                 Dashboard
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link fw-semibold" to="/upload-course">
+              <Link className="nav-link fw-semibold text-white" to="/upload-course">
                 Upload Course
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link fw-semibold" to="/contactus">
+              <Link className="nav-link fw-semibold text-white" to="/contactus">
                 Contact Us
               </Link>
             </li>
