@@ -26,7 +26,10 @@ function Navbar() {
         </button>
 
         {/* Navbar Links */}
-        <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <div
+          className="collapse navbar-collapse justify-content-end"
+          id="navbarNav"
+        >
           <ul className="navbar-nav align-items-lg-center">
             <li className="nav-item">
               <Link className="nav-link fw-semibold" to="/">
@@ -34,13 +37,8 @@ function Navbar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link fw-semibold" to="/login">
-                Login
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link fw-semibold" to="/register">
-                Register
+              <Link className="nav-link fw-semibold" to="/aboutus">
+                About Us
               </Link>
             </li>
             <li className="nav-item">
@@ -51,6 +49,11 @@ function Navbar() {
             <li className="nav-item">
               <Link className="nav-link fw-semibold" to="/upload-course">
                 Upload Course
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link fw-semibold" to="/contactus">
+                Contact Us
               </Link>
             </li>
           </ul>
