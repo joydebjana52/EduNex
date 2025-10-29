@@ -12,15 +12,36 @@ function Register() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Register data:", formData);
-    // Later: send to backend with fetch() or axios
+
+    try {
+      const res = await fetch("http://localhost:5000/api/users/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        alert("Registration successful!");
+        setFormData({ name: "", email: "", password: "", role: "student" });
+        window.location.href = "/login";
+      } else {
+        alert(data.message || "Registration failed");
+      }
+    } catch (error) {
+      console.error("Error registering:", error);
+      alert("Something went wrong. Try again later.");
+    }
   };
 
   return (
     <div className="container mt-4 pt-5" style={{ maxWidth: "500px" }}>
-      <h2 className="text-center mb-4 text-primary">Create Your EduNex Account</h2>
+      <h2 className="text-center mb-4 text-primary">
+        Create Your EduNex Account
+      </h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label className="form-label">Full Name</label>
