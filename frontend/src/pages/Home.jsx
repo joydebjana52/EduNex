@@ -1,27 +1,8 @@
 import React from "react";
 import CourseCard from "../components/CourseCard";
+import courses from "../data/courses"
 
 function Home() {
-  const courses = [
-    {
-      id: 1,
-      title: "React Basics",
-      description: "Learn React from scratch.",
-      category: "Frontend",
-    },
-    {
-      id: 2,
-      title: "Node.js Essentials",
-      description: "Server-side JavaScript simplified.",
-      category: "Backend",
-    },
-    {
-      id: 3,
-      title: "PostgreSQL Mastery",
-      description: "Learn database design and SQL.",
-      category: "Database",
-    },
-  ];
 
   return (
     <div className="d-flex flex-column min-vh-100 mt-4">
