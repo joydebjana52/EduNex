@@ -61,7 +61,7 @@ function Dashboard() {
           top: "60px",
           right: "30px",
           cursor: "pointer",
-          zIndex: 2000,
+          zIndex: 2,
         }}
         onMouseEnter={() => setHovering(true)}
         onMouseLeave={() => setHovering(false)}
