@@ -12,6 +12,7 @@ import CourseDetails from "./pages/CourseDetails";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ProtectedRoute from "./components/ProtectedRoute";
+import RoleProtectedRoute from "./components/RoleProtectedRoute";
 
 function App() {
   return (
@@ -28,7 +29,7 @@ function App() {
           {/* <Route path="/dashboard" element={<Dashboard />} /> */}
           <Route path="/dashboard" element={ <ProtectedRoute> <Dashboard /> </ProtectedRoute> } />
           {/* <Route path="/upload-course" element={<UploadCourse />} /> */}
-          <Route path="/upload-course" element={ <ProtectedRoute> <UploadCourse /> </ProtectedRoute> } />
+          <Route path="/upload-course" element={ <RoleProtectedRoute requiredRole="teacher"> <UploadCourse /> </RoleProtectedRoute> } />
           <Route path="/course/:id" element={<CourseDetails />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
