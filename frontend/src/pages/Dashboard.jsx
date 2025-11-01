@@ -1,22 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
-import { FaUserCircle } from "react-icons/fa";
 import ProfileCard from "../components/ProfileCard";
 import CourseCard from "../components/CourseCard";
-import InfoCard from "../components/InfoCard";
+// import InfoCard from "../components/InfoCard";
 import courses from "../data/courses";
+import defaultUser from "../assets/defaultUser.png";
 
 function Dashboard() {
   const [user, setUser] = useState(null);
   const [showProfile, setShowProfile] = useState(false);
-  const profileRef = useRef(null); // Reference for detecting outside clicks
+  const profileRef = useRef(null);
 
-  const obj = {
-    title: "Total Courses",
-    description: "You are enrolled in 5 courses.",
-    icon: "bi bi-journal-bookmark",
-  };
-
-  // Load user from localStorage
+  // Load user details from localStorage
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
@@ -36,16 +30,24 @@ function Dashboard() {
       }
     };
 
-    if (showProfile) {
-      document.addEventListener("mousedown", handleClickOutside);
-    } else {
-      document.removeEventListener("mousedown", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    if (showProfile) document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [showProfile]);
+
+  // Handle image upload
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      const imageUrl = reader.result;
+      const updatedUser = { ...user, profileImage: imageUrl };
+      setUser(updatedUser);
+      localStorage.setItem("user", JSON.stringify(updatedUser)); // persist change
+    };
+    reader.readAsDataURL(file);
+  };
 
   return (
     <div className="container mt-4 pt-5 position-relative">
@@ -60,16 +62,24 @@ function Dashboard() {
           zIndex: 2000,
         }}
       >
-        <FaUserCircle
-          size={40}
-          color="#007bff"
+        {/* Profile Image */}
+        <img
+          src={user?.profileImage || defaultUser}
+          alt="User"
+          width={45}
+          height={45}
+          style={{
+            borderRadius: "50%",
+            objectFit: "cover",
+            border: "2px solid #007bff",
+          }}
           onClick={() => setShowProfile(!showProfile)}
         />
 
         {/* Profile Card */}
         {showProfile && user && (
           <div
-            className="position-absolute mt-2"
+            className="position-absolute mt-2 bg-white shadow p-2 rounded"
             style={{
               right: 0,
               zIndex: 2100,
@@ -77,15 +87,27 @@ function Dashboard() {
             }}
           >
             <ProfileCard user={user} />
+
+            {/* Upload Button */}
+            <div className="mt-2 text-center">
+              <label
+                htmlFor="imageUpload"
+                className="btn btn-sm btn-outline-primary"
+                style={{ cursor: "pointer" }}
+              >
+                Upload Image
+              </label>
+              <input
+                id="imageUpload"
+                type="file"
+                accept="image/*"
+                style={{ display: "none" }}
+                onChange={handleImageUpload}
+              />
+            </div>
           </div>
         )}
       </div>
-
-      {/* InfoCard Section */}
-      {/* <h2 className="text-center text-primary mb-4">User Information</h2>
-      <div className="row mb-4">
-        <InfoCard obj={obj} color="red" />
-      </div> */}
 
       {/* Course Section */}
       <h2 className="text-center text-primary mb-4">Your Courses</h2>
