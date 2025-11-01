@@ -1,7 +1,7 @@
 import React from "react";
 import defaultUser from "../assets/defaultUser.png";
 
-function ProfileCard({ user }) {
+function ProfileCard({ user, setShowImageModal }) {
   if (!user) {
     return (
       <div className="card shadow-sm border-0 text-center p-4">
@@ -14,12 +14,13 @@ function ProfileCard({ user }) {
     <div className="card shadow-sm border-0 p-4 text-center">
       <div className="mb-3">
         <img
-          src={user.image || defaultUser}
+          src={user.profileImage || defaultUser}
           alt={user.name || "Default user"}
           className="rounded-circle"
           width="100"
           height="100"
-          style={{ objectFit: "cover" }}
+          style={{ objectFit: "cover", cursor: "pointer" }}
+          onClick={() => setShowImageModal(true)}
         />
       </div>
       <h5 className="fw-bold">{user.name}</h5>

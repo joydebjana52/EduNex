@@ -9,6 +9,7 @@ function Dashboard() {
   const [user, setUser] = useState(null);
   const [showProfile, setShowProfile] = useState(false);
   const [hovering, setHovering] = useState(false);
+  const [showImageModal, setShowImageModal] = useState(false);
   const profileRef = useRef(null);
 
   // Load user from localStorage
@@ -80,7 +81,7 @@ function Dashboard() {
             onClick={() => setShowProfile(!showProfile)}
           />
 
-          {/* Hover Upload Option (only visible when profile is open) */}
+          {/* Hover Upload Option */}
           {showProfile && hovering && (
             <label
               htmlFor="imageUploadSmall"
@@ -122,28 +123,40 @@ function Dashboard() {
               width: "260px",
             }}
           >
-            <ProfileCard user={user} />
-
-            {/* Upload Button (inside card) */}
-            {/* <div className="mt-2 text-center">
-              <label
-                htmlFor="imageUpload"
-                className="btn btn-sm btn-outline-primary"
-                style={{ cursor: "pointer" }}
-              >
-                Update Profile Photo
-              </label>
-              <input
-                id="imageUpload"
-                type="file"
-                accept="image/*"
-                style={{ display: "none" }}
-                onChange={handleImageUpload}
-              />
-            </div> */}
+            <ProfileCard user={user} setShowImageModal={setShowImageModal} />
           </div>
         )}
       </div>
+
+      {/* Image Popup Modal */}
+      {showImageModal && (
+        <div
+          onClick={() => setShowImageModal(false)}
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100vw",
+            height: "100vh",
+            background: "rgba(0,0,0,0.7)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 3000,
+          }}
+        >
+          <img
+            src={user?.profileImage || defaultUser}
+            alt="Profile Preview"
+            style={{
+              maxWidth: "80%",
+              maxHeight: "80%",
+              borderRadius: "10px",
+              boxShadow: "0 0 15px rgba(0,0,0,0.3)",
+            }}
+          />
+        </div>
+      )}
 
       {/* Course Section */}
       <h2 className="text-center text-primary mb-4">Your Courses</h2>
