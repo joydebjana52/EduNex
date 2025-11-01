@@ -95,7 +95,7 @@ function Dashboard() {
                 className="btn btn-sm btn-outline-primary"
                 style={{ cursor: "pointer" }}
               >
-                Upload Image
+                U
               </label>
               <input
                 id="imageUpload"
