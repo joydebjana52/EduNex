@@ -1,16 +1,49 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [formData, setFormData] = useState({ email: "", password: "" });
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Login data:", formData);
-    // Later: send to backend with fetch() or axios
+    console.log("Submitting login with data:", formData);
+    setLoading(true);
+    setError("");
+
+    try {
+      const res = await fetch("http://localhost:5000/api/users/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.message || "Login failed");
+        setLoading(false);
+        return;
+      }
+
+      // Save token & user info
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data.user));
+
+      // Redirect to dashboard
+      navigate("/dashboard");
+    } catch (err) {
+      console.error("Error logging in:", err);
+      setError("Server error. Try again later.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -24,8 +57,8 @@ function Login() {
             name="email"
             className="form-control"
             placeholder="Enter your email"
-            onChange={handleChange}
             value={formData.email}
+            onChange={handleChange}
             required
           />
         </div>
@@ -37,16 +70,23 @@ function Login() {
             name="password"
             className="form-control"
             placeholder="Enter password"
-            onChange={handleChange}
             value={formData.password}
+            onChange={handleChange}
             required
           />
         </div>
 
-        <button type="submit" className="btn btn-primary w-100">
-          Login
+        {error && <p className="text-danger text-center">{error}</p>}
+
+        <button
+          type="submit"
+          className="btn btn-primary w-100"
+          disabled={loading}
+        >
+          {loading ? "Logging in..." : "Login"}
         </button>
       </form>
+
       <p className="text-center mt-3">
         Don’t have an account? <a href="/register">Register</a>
       </p>

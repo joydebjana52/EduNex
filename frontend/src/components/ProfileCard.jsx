@@ -15,6 +15,7 @@ function ProfileCard({ user, setShowImageModal }) {
 
   const handleLogout = () => {
     localStorage.removeItem("user"); // clear user info
+    localStorage.removeItem("token"); // clear auth token
     navigate("/login");
   };
 
