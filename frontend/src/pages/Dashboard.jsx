@@ -4,6 +4,7 @@ import CourseCard from "../components/CourseCard";
 // import ProfileCard from "../components/ProfileCard";
 import courses from "../data/courses";
 import defaultUser from "../assets/defaultUser.png";
+import "../styles/Dashboard.css";
 
 function Dashboard() {
   const [user, setUser] = useState(null);

@@ -1,6 +1,7 @@
 import React from "react";
 import CourseCard from "../components/CourseCard";
-import courses from "../data/courses"
+import courses from "../data/courses";
+import { Link } from "react-router-dom";
 
 function Home() {
 
@@ -91,9 +92,9 @@ function Home() {
             ))}
           </div>
           <div className="text-center mt-5">
-            <a href="/register" className="btn btn-primary btn-lg">
+            <Link to="/dashboard" className="btn btn-primary btn-lg">
               Explore All Courses
-            </a>
+            </Link>
           </div>
         </div>
       </section>
