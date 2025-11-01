@@ -4,6 +4,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 function Navbar() {
+  const user = JSON.parse(localStorage.getItem("user"));
+  // const token = localStorage.getItem("token");
+  
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-primary shadow-sm fixed-top">
       <div className="container">
@@ -46,11 +49,19 @@ function Navbar() {
                 Dashboard
               </Link>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <Link className="nav-link fw-semibold text-white" to="/upload-course">
                 Upload Course
               </Link>
-            </li>
+            </li> */}
+            {/* Show Upload Course only if user is a teacher */}
+            {user && user.role === "teacher" && (
+              <li className="nav-item">
+                <Link className="nav-link fw-semibold text-white" to="/upload-course">
+                  Upload Course
+                </Link>
+              </li>
+            )}
             <li className="nav-item">
               <Link className="nav-link fw-semibold text-white" to="/contactus">
                 Contact Us
