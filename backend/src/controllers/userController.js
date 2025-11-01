@@ -153,3 +153,17 @@ export const getProfile = async (req, res) => {
     res.status(500).json({ message: "Server error while fetching profile" });
   }
 }
+
+/* ========== Temp Route ====== */
+export const getDashboard = async (req, res) => {
+  try {
+    // Here req.user comes from the decoded token
+    res.json({
+      message: "Welcome to your dashboard!",
+      user: req.user,
+    });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ message: "Server error" });
+  }
+}
