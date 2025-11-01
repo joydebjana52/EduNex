@@ -1,16 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
 import ProfileCard from "../components/ProfileCard";
 import CourseCard from "../components/CourseCard";
-// import InfoCard from "../components/InfoCard";
+// import ProfileCard from "../components/ProfileCard";
 import courses from "../data/courses";
 import defaultUser from "../assets/defaultUser.png";
 
 function Dashboard() {
   const [user, setUser] = useState(null);
   const [showProfile, setShowProfile] = useState(false);
+  const [hovering, setHovering] = useState(false);
   const profileRef = useRef(null);
 
-  // Load user details from localStorage
+  // Load user from localStorage
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
@@ -44,7 +45,7 @@ function Dashboard() {
       const imageUrl = reader.result;
       const updatedUser = { ...user, profileImage: imageUrl };
       setUser(updatedUser);
-      localStorage.setItem("user", JSON.stringify(updatedUser)); // persist change
+      localStorage.setItem("user", JSON.stringify(updatedUser));
     };
     reader.readAsDataURL(file);
   };
@@ -61,25 +62,60 @@ function Dashboard() {
           cursor: "pointer",
           zIndex: 2000,
         }}
+        onMouseEnter={() => setHovering(true)}
+        onMouseLeave={() => setHovering(false)}
       >
-        {/* Profile Image */}
-        <img
-          src={user?.profileImage || defaultUser}
-          alt="User"
-          width={45}
-          height={45}
-          style={{
-            borderRadius: "50%",
-            objectFit: "cover",
-            border: "2px solid #007bff",
-          }}
-          onClick={() => setShowProfile(!showProfile)}
-        />
+        <div style={{ position: "relative", display: "inline-block" }}>
+          {/* Profile Image */}
+          <img
+            src={user?.profileImage || defaultUser}
+            alt="User"
+            width={45}
+            height={45}
+            style={{
+              borderRadius: "50%",
+              objectFit: "cover",
+              border: "2px solid #007bff",
+            }}
+            onClick={() => setShowProfile(!showProfile)}
+          />
+
+          {/* Hover Upload Option (only visible when profile is open) */}
+          {showProfile && hovering && (
+            <label
+              htmlFor="imageUploadSmall"
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                background: "rgba(0, 0, 0, 0.5)",
+                color: "white",
+                fontSize: "10px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                borderRadius: "50%",
+                cursor: "pointer",
+              }}
+            >
+              Change
+              <input
+                id="imageUploadSmall"
+                type="file"
+                accept="image/*"
+                style={{ display: "none" }}
+                onChange={handleImageUpload}
+              />
+            </label>
+          )}
+        </div>
 
         {/* Profile Card */}
         {showProfile && user && (
           <div
-            className="position-absolute mt-2 bg-white shadow p-2 rounded"
+            className="position-absolute mt-2 bg-white shadow p-3 rounded"
             style={{
               right: 0,
               zIndex: 2100,
@@ -88,14 +124,14 @@ function Dashboard() {
           >
             <ProfileCard user={user} />
 
-            {/* Upload Button */}
-            <div className="mt-2 text-center">
+            {/* Upload Button (inside card) */}
+            {/* <div className="mt-2 text-center">
               <label
                 htmlFor="imageUpload"
                 className="btn btn-sm btn-outline-primary"
                 style={{ cursor: "pointer" }}
               >
-                Update profile photo
+                Update Profile Photo
               </label>
               <input
                 id="imageUpload"
@@ -104,7 +140,7 @@ function Dashboard() {
                 style={{ display: "none" }}
                 onChange={handleImageUpload}
               />
-            </div>
+            </div> */}
           </div>
         )}
       </div>

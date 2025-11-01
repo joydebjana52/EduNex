@@ -1,4 +1,5 @@
 import React from "react";
+import defaultUser from "../assets/defaultUser.png";
 
 function ProfileCard({ user }) {
   if (!user) {
@@ -12,7 +13,14 @@ function ProfileCard({ user }) {
   return (
     <div className="card shadow-sm border-0 p-4 text-center">
       <div className="mb-3">
-        <i className="bi bi-person-circle fs-1 text-primary"></i>
+        <img
+          src={user.image || defaultUser}
+          alt={user.name || "Default user"}
+          className="rounded-circle"
+          width="100"
+          height="100"
+          style={{ objectFit: "cover" }}
+        />
       </div>
       <h5 className="fw-bold">{user.name}</h5>
       <p className="text-muted mb-1">{user.email}</p>
