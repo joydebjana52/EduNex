@@ -34,7 +34,7 @@ function ProfileCard({ user, setShowImageModal }) {
       </div>
       <h5 className="fw-bold">{user.name}</h5>
       <p className="text-muted mb-1">{user.email}</p>
-      <span className="badge bg-success text-uppercase">{user.role}</span>
+      <span className="badge bg-success text-capitalize">{user.role}</span>
 
       {/* Logout Button */}
       <div
