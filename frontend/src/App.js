@@ -13,6 +13,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ProtectedRoute from "./components/ProtectedRoute";
 import RoleProtectedRoute from "./components/RoleProtectedRoute";
+import ErrorPage from "./pages/ErrorPage";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="/course/:id" element={<CourseDetails />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </main>
 
