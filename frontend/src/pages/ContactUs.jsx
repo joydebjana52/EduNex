@@ -8,7 +8,7 @@ function Contact() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successMsg, setSuccessMsg] = useState("");
-
+  const url = process.env.REACT_APP_API_URL;
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -33,7 +33,7 @@ function Contact() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("http://localhost:5000/api-mail/send-mail", {
+      const response = await fetch(`${url}/api-mail/send-mail`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
