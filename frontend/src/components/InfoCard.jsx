@@ -2,7 +2,7 @@ import React from "react";
 
 function InfoCard({ obj, color }) {
   return (
-    <div className="card shadow-sm border-0 h-100 text-center p-3">
+    <div className="card shadow-sm border-0 h-100 text-center p-3 glass-card">
       <div className={`fs-1 mb-3 text-${color || "primary"}`}>
         <i className={obj.icon || "bi bi-book"}></i>
       </div>

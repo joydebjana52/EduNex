@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function CourseCard({ course }) {
   return (
     <div className="col-md-4 mb-4">
-      <div className="card h-100 shadow-sm">
+      <div className="card h-100 shadow-sm glass-card">
         <div className="card-body">
           <h5 className="card-title text-primary">{course.title}</h5>
           <p className="card-text text-muted">{course.description}</p>

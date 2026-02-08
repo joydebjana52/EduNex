@@ -117,7 +117,7 @@ function Dashboard() {
         {/* Profile Card */}
         {showProfile && user && (
           <div
-            className="position-absolute mt-2 bg-white shadow p-3 rounded"
+            className="position-absolute mt-2 shadow p-3 rounded glass-surface"
             style={{
               right: 0,
               zIndex: 2100,

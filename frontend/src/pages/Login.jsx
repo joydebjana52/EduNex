@@ -46,7 +46,10 @@ function Login() {
   };
 
   return (
-    <div className="container mt-4 pt-5" style={{ maxWidth: "400px" }}>
+    <div
+      className="container mt-4 pt-5 glass-form p-4"
+      style={{ maxWidth: "400px" }}
+    >
       <h2 className="text-center mb-4 text-primary">Login to EduNex</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">

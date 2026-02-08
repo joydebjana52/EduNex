@@ -40,7 +40,10 @@ function Register() {
   };
 
   return (
-    <div className="container mt-4 pt-5" style={{ maxWidth: "500px" }}>
+    <div
+      className="container mt-4 pt-5 glass-form p-4"
+      style={{ maxWidth: "500px" }}
+    >
       <h2 className="text-center mb-4 text-primary">
         Create Your EduNex Account
       </h2>

@@ -7,7 +7,7 @@ function ProfileCard({ user, setShowImageModal }) {
   const navigate = useNavigate();
   if (!user) {
     return (
-      <div className="card shadow-sm border-0 text-center p-4">
+      <div className="card shadow-sm border-0 text-center p-4 glass-card">
         <p className="text-muted">Loading user details...</p>
       </div>
     );
@@ -20,7 +20,7 @@ function ProfileCard({ user, setShowImageModal }) {
   };
 
   return (
-    <div className="card shadow-sm border-0 p-4 text-center">
+    <div className="card shadow-sm border-0 p-4 text-center glass-card">
       <div className="mb-3">
         <img
           src={user.profileImage || defaultUser}
