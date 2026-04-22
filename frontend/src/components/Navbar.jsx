@@ -32,7 +32,7 @@ function Navbar() {
   }, [menuOpen]);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-primary shadow-sm fixed-top">
+    <nav className="navbar navbar-expand-lg navbar-dark glass-navbar shadow-sm fixed-top">
       <div className="container" ref={menuRef}>
         {/* Brand / Logo */}
         <Link className="navbar-brand fw-bold text-white" to="/">

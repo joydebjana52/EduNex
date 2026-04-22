@@ -67,7 +67,7 @@ function Contact() {
         <div className="col-md-6">
           <form
             onSubmit={handleSubmit}
-            className="bg-light p-4 rounded shadow-sm"
+            className="glass-form p-4"
           >
             <div className="mb-3">
               <label htmlFor="name" className="form-label fw-semibold">

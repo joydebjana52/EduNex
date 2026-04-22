@@ -3,7 +3,7 @@ import { FaFacebook, FaXTwitter, FaInstagram, FaGithub } from "react-icons/fa6";
 
 function Footer() {
   return (
-    <footer className="bg-dark text-light pt-4 pb-3 mt-5">
+    <footer className="glass-footer text-light pt-4 pb-3 mt-5">
       <div className="container text-center">
         {/* Top Section */}
         <h5 className="fw-bold mb-3 text-primary">EduNex</h5>

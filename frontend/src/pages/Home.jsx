@@ -9,7 +9,7 @@ function Home() {
     <div className="d-flex flex-column min-vh-100 mt-4">
       {/* Hero Section */}
       <section
-        className="py-5 text-center text-dark"
+        className="py-5 text-center text-dark glass-hero mx-3 mx-md-5"
         style={{
           background:
             "linear-gradient(135deg, rgba(13,110,253,0.08) 0%, rgba(0,123,255,0.06) 100%)",
@@ -31,12 +31,12 @@ function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="py-5 bg-white">
+      <section className="py-5 glass-section mx-3 mx-md-5 my-4">
         <div className="container text-center">
           <h2 className="mb-5 fw-bold text-primary">Why Choose EduNex?</h2>
           <div className="row g-4">
             <div className="col-md-4">
-              <div className="card shadow-sm border-0 h-100">
+              <div className="card shadow-sm border-0 h-100 glass-card">
                 <div className="card-body">
                   <div className="text-primary mb-3 fs-1">
                     <i className="bi bi-journal-check"></i>
@@ -50,7 +50,7 @@ function Home() {
             </div>
 
             <div className="col-md-4">
-              <div className="card shadow-sm border-0 h-100">
+              <div className="card shadow-sm border-0 h-100 glass-card">
                 <div className="card-body">
                   <div className="text-primary mb-3 fs-1">
                     <i className="bi bi-people"></i>
@@ -64,7 +64,7 @@ function Home() {
             </div>
 
             <div className="col-md-4">
-              <div className="card shadow-sm border-0 h-100">
+              <div className="card shadow-sm border-0 h-100 glass-card">
                 <div className="card-body">
                   <div className="text-primary mb-3 fs-1">
                     <i className="bi bi-graph-up-arrow"></i>
@@ -81,7 +81,7 @@ function Home() {
       </section>
 
       {/* Popular Courses */}
-      <section className="py-5 bg-light">
+      <section className="py-5 glass-section mx-3 mx-md-5 my-4">
         <div className="container">
           <h2 className="text-center mb-5 fw-bold text-primary">
             Popular Courses
